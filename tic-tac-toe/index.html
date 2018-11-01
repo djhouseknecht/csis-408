@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- boilerplate code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- page title -->
     <title>Tic Tac Toe</title>
+
+    <!-- pull in the style sheet and google font -->
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 </head>
 <body>
 
-    <!-- citation: https://www.youtube.com/watch?v=P2TcQ3h0ipQ -->
-    <table>
+    <table class="score-board">
+        <tr>
+            <th>Player</th>
+            <th>AI</th>
+            <th>Tie</th>
+        </tr>
+        <tr>
+            <td class="score" id="playerScore">0</td>
+            <td class="score" id="aiScore">0</td>
+            <td class="score" id="tiedScore">0</td>
+        </tr>
+    </table>
+
+    <!-- table element which serves as the game board -->
+    <table class="game-board">
         <tr>
             <td class="cell" id="0"></td>
             <td class="cell" id="1"></td>
@@ -28,13 +47,13 @@
         </tr>
     </table>
 
+    <!-- end game dialog -->
     <div class="endgame">
         <div class="text"></div>
         <button onclick="startGame()">Replay</button>
     </div>
 
-
-
+    <!-- pull in the script fileS -->
     <script src="script.js"></script>
 </body>
 </html>
