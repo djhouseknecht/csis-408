@@ -7,7 +7,7 @@ Environment (IDE) you want. You may create these all as Web Apps, you do not nee
 Android, iOS developer accounts. Submit your URL for your project, or a zip file of your
 working project folder via Blackboard. No Email submissions accepted.
 
-## Project 2: Monthly Household Budget App
+## Project 2: [Monthly Household Budget App](/monthly-budget/README.md)
 Project 2: Create a Monthly Household Budget App. You may choose any Integrated
 Development Environment (IDE) you want. You may create these all as Web Apps, you do not
 need to pay for Android, iOS developer accounts. Submit your URL for your project, or a zip file
