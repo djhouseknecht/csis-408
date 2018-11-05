@@ -1,7 +1,7 @@
 # CSIS-408
 All 4 projects for CSIS 408
 
-## [Project 1: Tic-Tac-Toe Game](/tic-tac-toe/README.md)
+## Project 1: [Tic-Tac-Toe Game](/tic-tac-toe/README.md)
 Project 1: Create a Tic-Tac-Toe Game App. You may choose any Integrated Development
 Environment (IDE) you want. You may create these all as Web Apps, you do not need to pay for
 Android, iOS developer accounts. Submit your URL for your project, or a zip file of your

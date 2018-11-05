@@ -13,6 +13,8 @@ working project folder via Blackboard. No Email submissions accepted.
 
 #### Instructions
 1. Pull down the project onto your locally machine
+    - `# cd into the directory you want to download the files`
+    - `git clone https://github.com/djhouseknecht/csis-408.git`
 2. Right click on the `csis-408/tic-tac-toe/index.html` file and select `Open With`
 3. Select to open with Chrome
 4. Play the game in your broswer! 

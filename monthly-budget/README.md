@@ -13,19 +13,31 @@ of your working project folder via Blackboard. No Email submissions accepted.
 - Docker (what version?)
 
 #### Instructions
+Start Rest using docker: 
+1. `docker build . -t project-2`
+2. `    
 1. Pull down the project onto your locally machine
 2. Right click on the `csis-408/tic-tac-toe/index.html` file and select `Open With`
 3. Select to open with Chrome
 4. Play the game in your broswer!
 
+# TODO's (dev notes)
+- [ ] .dockerignore files
+- [ ] Docker commands to test the apps 
 
 ## Notes on the Project
 
+
+
+### Project 
+- Docker was used to build, test, and deploy the projects 
 ### Data Source
 - H2 file storage
 - Flyway migration 
 ### Java Backend
 - Spring boot
+- Maven build
+- Docker 
 - security
 - Tests
 - swagger
@@ -38,7 +50,7 @@ This was a useful resource for the Dockerization of the Java side of this applic
 
 Used this reference for Dockerfile Maven install: https://github.com/Zenika/alpine-maven/blob/master/jdk8/Dockerfile
 
-
+This is Spring-boot's website: https://spring.io/projects/spring-boot. I downloaded the starter project from there. 
 ## IDE Used
 I used [VScode](https://code.visualstudio.com/) to write the front end of this application.
 
