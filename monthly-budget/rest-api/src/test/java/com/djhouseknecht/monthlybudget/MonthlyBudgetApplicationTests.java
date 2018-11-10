@@ -1,5 +1,6 @@
 package com.djhouseknecht.monthlybudget;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,11 @@ public class MonthlyBudgetApplicationTests {
 
 	@Test
 	public void contextLoads() {
+	}
+
+	@Test
+	public void basicTest() {
+		Assert.assertEquals(true, true);
 	}
 
 }

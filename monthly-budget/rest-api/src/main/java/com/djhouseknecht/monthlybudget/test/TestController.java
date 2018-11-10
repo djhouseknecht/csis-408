@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test() {
-        return "test is working";
+    public String[] test() {
+        String[] array = { "hi", "bye"};
+        return array;
     }
 }

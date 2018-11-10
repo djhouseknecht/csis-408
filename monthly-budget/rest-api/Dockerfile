@@ -14,11 +14,27 @@ RUN wget http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/ap
   rm apache-maven-$MAVEN_VERSION-bin.tar.gz && \
   mv apache-maven-$MAVEN_VERSION /usr/lib/mvn
 
+# Create working directory and cd into it
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+# create user and grant permissions
+RUN addgroup -S appuser && adduser -S -G appuser appuser 
+
+RUN chown -R appuser:appuser /usr/src/app/
+RUN chmod 755 /usr/src/app/
+
+# switch to newly created user
+USER appuser
+
 # Add a volume pointing to /tmp
 VOLUME /tmp
 
-# Change working directory
-#WORKDIR /usr/src/app
+# Copy pom file and download dependencies
+ADD pom.xml .
+
+RUN ["mvn", "verify", "--fail-never"]
 
 # Copy in the source code
 ADD . .
@@ -28,15 +44,10 @@ RUN mvn package
 
 # Rename jar file
 RUN mv target/monthly-budget-0.0.1-SNAPSHOT.jar app.jar
+# RUN chmod 755 /usr/src/app/app.jar
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
-# The application's jar file
-# ARG JAR_FILE=target/monthly-budget-0.0.1-SNAPSHOT.jar
-
-# Add the application's jar to the container
-# ADD ${JAR_FILE} websocket-demo.jar
-
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
