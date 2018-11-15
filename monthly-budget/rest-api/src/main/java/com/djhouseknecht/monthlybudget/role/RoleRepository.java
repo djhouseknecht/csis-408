@@ -1,4 +1,4 @@
-package com.djhouseknecht.monthlybudget.config.permissions;
+package com.djhouseknecht.monthlybudget.role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

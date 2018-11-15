@@ -1,5 +1,7 @@
-package com.djhouseknecht.monthlybudget.config.permissions;
+package com.djhouseknecht.monthlybudget.privilege;
 
+
+import com.djhouseknecht.monthlybudget.role.Role;
 
 import javax.persistence.*;
 import java.util.Collection;

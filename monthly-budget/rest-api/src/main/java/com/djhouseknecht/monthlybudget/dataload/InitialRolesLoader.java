@@ -1,5 +1,9 @@
-package com.djhouseknecht.monthlybudget.config.permissions;
+package com.djhouseknecht.monthlybudget.dataload;
 
+import com.djhouseknecht.monthlybudget.privilege.Privilege;
+import com.djhouseknecht.monthlybudget.privilege.PrivilegeRepository;
+import com.djhouseknecht.monthlybudget.role.Role;
+import com.djhouseknecht.monthlybudget.role.RoleRepository;
 import com.djhouseknecht.monthlybudget.user.User;
 import com.djhouseknecht.monthlybudget.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +18,9 @@ import java.util.Collection;
 import java.util.List;
 
 @Component
-public class InitialRolesLoader implements
-        ApplicationListener<ContextRefreshedEvent> {
+public class InitialRolesLoader implements ApplicationListener<ContextRefreshedEvent> {
 
-        boolean alreadySetup = false;
+        private boolean alreadySetup = false;
 
         @Autowired
         private UserRepository userRepository;
@@ -49,10 +52,10 @@ public class InitialRolesLoader implements
 
             Role adminRole = roleRepository.findByName("ROLE_ADMIN");
             User user = new User();
-            user.setFirstName("Test");
-            user.setLastName("Test");
-            user.setPassword(passwordEncoder.encode("test"));
-            user.setEmail("test@test.com");
+            user.setFirstName("Jane");
+            user.setLastName("Jackson");
+            user.setPassword(passwordEncoder.encode("Liberty123"));
+            user.setEmail("janejackson@email.com");
             user.setRoles(Arrays.asList(adminRole));
             user.setEnabled(true);
             userRepository.save(user);
@@ -72,8 +75,7 @@ public class InitialRolesLoader implements
         }
 
         @Transactional
-        private Role createRoleIfNotFound(
-                String name, Collection<Privilege> privileges) {
+        private Role createRoleIfNotFound(String name, Collection<Privilege> privileges) {
 
             Role role = roleRepository.findByName(name);
             if (role == null) {
@@ -83,5 +85,6 @@ public class InitialRolesLoader implements
             }
             return role;
         }
+
     }
 

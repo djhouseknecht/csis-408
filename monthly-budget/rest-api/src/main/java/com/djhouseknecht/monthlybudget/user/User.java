@@ -1,6 +1,7 @@
 package com.djhouseknecht.monthlybudget.user;
 
-import com.djhouseknecht.monthlybudget.config.permissions.Role;
+import com.djhouseknecht.monthlybudget.role.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -16,10 +17,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    @JsonIgnore
     private String password;
     private boolean enabled;
     private boolean tokenExpired;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "users_roles",

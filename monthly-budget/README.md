@@ -19,10 +19,6 @@ Start Rest using docker (note: you may need to run `docker` as `sudo` or `Admini
 1. `docker build . -t project-2`
 2. `docker run -p 8080:8080 project-2`
 1. Pull down the project onto your locally machine
-2. Right click on the `csis-408/tic-tac-toe/index.html` file and select `Open With`
-3. Select to open with Chrome
-4. Play the game in your broswer!
-
 
 UI: 
 `docker build . -t ui-project-2`
@@ -76,6 +72,7 @@ This is Spring-boot's website: https://spring.io/projects/spring-boot. I downloa
 Useful: https://stackoverflow.com/questions/42208442/maven-docker-cache-dependencies	
 
 Spring Security: https://www.baeldung.com/role-and-privilege-for-spring-security-registration
+and http://websystique.com/spring-security/secure-spring-rest-api-using-basic-authentication/
 
 ## IDE Used
 I used [VScode](https://code.visualstudio.com/) to write the front end of this application.

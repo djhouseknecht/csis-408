@@ -1,5 +1,8 @@
-package com.djhouseknecht.monthlybudget.config.permissions;
+package com.djhouseknecht.monthlybudget.security;
 
+import com.djhouseknecht.monthlybudget.privilege.Privilege;
+import com.djhouseknecht.monthlybudget.role.Role;
+import com.djhouseknecht.monthlybudget.role.RoleRepository;
 import com.djhouseknecht.monthlybudget.user.User;
 import com.djhouseknecht.monthlybudget.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +34,7 @@ public class MyUserDetailsService implements UserDetailsService {
     private RoleRepository roleRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email)
-            throws UsernameNotFoundException {
-
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
         if (user == null) {
             return new org.springframework.security.core.userdetails.User(
@@ -47,14 +48,11 @@ public class MyUserDetailsService implements UserDetailsService {
                 true, getAuthorities(user.getRoles()));
     }
 
-    private Collection<? extends GrantedAuthority> getAuthorities(
-            Collection<Role> roles) {
-
+    private Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
         return getGrantedAuthorities(getPrivileges(roles));
     }
 
     private List<String> getPrivileges(Collection<Role> roles) {
-
         List<String> privileges = new ArrayList<>();
         List<Privilege> collection = new ArrayList<>();
         for (Role role : roles) {
