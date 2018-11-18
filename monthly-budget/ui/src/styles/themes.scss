@@ -1,0 +1,92 @@
+/* This file is used to override default bootstrap themes */
+
+/* import fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:700');
+@import url('https://fonts.googleapis.com/css?family=Nunito:500,700');
+/* place custom variables below here */
+
+$font-family-sans-serif: 'Nunito', sans-serif;
+// $font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-monospace: 'Roboto Mono', monospace;
+// $font-family-nunito: 'Nunito', sans-serif;
+
+$navbar-height: 56px;
+$common-margin: 48px;
+$common-padding: 24px;
+
+$bold: 700;
+
+// $drop-shadow-color: #DADADA;
+// $dark-text-color: #595959;
+// $light-text-color: #9B9B9B;
+// $dark-gray: #595959;
+// $light-gray: #F1F1F1;
+// $light-blue: #3B99FC;
+// $app-gray: #595959;
+// $white: #FFFFFF;
+/* Coolors Exported Palette - coolors.co/ffffff-84dcc6-acd7ec-8b95c9-478978 */
+
+/* HEX */
+$color1: #ffffff; //rgba(255, 255, 255, 1);
+$color2: #7fc6a4; //rgba(127, 198, 164, 1);
+$color3: #5d737e; //rgba(93, 115, 126, 1);
+$color4: #55505c; //rgba(85, 80, 92, 1);
+$color5: #faf33e; //rgba(250, 243, 62, 1);
+
+
+$gray-0: #F8F8F8; //odd striping background
+$gray-1: #F3F3F3; //desktop body background
+$gray-2: #F1F1F1; //form background
+$gray-3: #DADADA; //control border, secondary button border, desktop main content box-shadow
+$gray-4: #9B9B9B; //control hint text, control placeholder text
+$gray-5: #595959; //general text, control text, control label text, toast close icon, toggle schedule icon
+$gray-6: #222222; //tooltip background
+
+$green-1: #CFF0E4; //success toast background
+$green-2: #08A36C; //open section text
+$green-3: #00AB6C; //success icon
+
+$red-1: #FCF0F0; //prereq/coreq background
+$red-2: #F0CFCF; //error toast background
+$red-3: #FF534D; //error icon, error text
+
+$yellow-1: #F5B939; //status warning icon
+
+$white: #FFFFFF;
+
+
+
+/* override bootstrap variables below here */
+
+$primary: $color2;
+$secondary: $color4;
+// $success: $green-1; //success toast color
+// $info: $blue-3; //info toast background color
+$warning: $yellow-1; //this is using an icon color, not a background color
+$danger: $red-2; //error toast color
+
+$body-bg: $gray-1;
+$body-color: $gray-5;
+
+$enable-rounded: false;
+
+$input-btn-padding-y: .5625rem;
+
+$input-border-color: $gray-3;
+
+/*
+individual color (and gray) variables are defined first, as default
+$colors and $theme-colors maps are defined next, using the color variables
+
+so:
+first override colors and gray map, to set the palette for the application
+then update $colors and $theme-colors as appropriate, to use the right colors in the right places
+
+the lowest numbered colors correlate to the lightest (highest numbered) colors
+*/
+
+/* import bootstrap's functions, variables, and mixins - these can be used anywhere this file is imported */
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import "~bootstrap/scss/mixins";

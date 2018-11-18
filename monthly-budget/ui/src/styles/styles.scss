@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// deeppurple-amber.css
+// indigo-pink.css
+// pink-bluegrey.css
+// purple-green.css
+/* Override bootstrap theme variables */
+@import "./themes";
+@import "./material-theme";
+
+/* import project sass */
+// @import "./mixins";
+
+/* import bootstrap - all files except functions, variables, and mixins, since those are included in themes.scss */
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+/* import styles for toasts */
+// @import "~ngx-toastr/toastr-bs4-alert";
+
+
+
+/* global styles go below here */
+html, body {
+  height: 100%;
+  // height: calc(100vh - #{navbar-height});
+
+  font-family: $font-family-sans-serif;
+  background-color: $gray-1;
+}
+
+.pane {
+  width: 100%;
+  margin: $common-margin auto;
+  background-color: $gray-0;
+  box-shadow: 0 3px 14px 0 $gray-4;
+
+  @include media-breakpoint-up(lg) {
+    width: 90%;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 80%;
+  }
+
+  &-header {
+    width: 100%;
+    padding: $common-padding;
+    background-color: $color3;
+    color: $white;
+    h4 {
+      font-size: 24px;
+      font-weight: $bold;
+      margin: 0;
+    }
+  }
+  &-body {
+    width: 100%;
+    padding: $common-padding;
+    color: black;
+  }
+}
+
+.errorMsg {
+  font-style: italic;
+  color: $red-3;
+}
+
+img {
+  max-width: 340px;
+  max-height: 340px;
+}

@@ -14,6 +14,6 @@ export class AppComponent  {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get(environment.apiUrl + '/test').subscribe(title => console.log(title))
+    // this.http.get(environment.apiUrl + '/hello-user').subscribe(title => console.log(title))
   }
 }
