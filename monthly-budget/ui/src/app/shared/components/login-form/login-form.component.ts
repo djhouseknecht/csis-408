@@ -1,34 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/core/user/user.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { IUser } from '../../models/user';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
 
-  public credentials = {username: '', password: ''};
+  public isAuthenticated: boolean;
+  public error: boolean;
+  public user: IUser;
+  public credentials: { username: string, password: string } = { username: '', password: '' };
 
-  constructor(private userService: UserService, private http: HttpClient, private router: Router) { }
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    let headers = new HttpHeaders();
-    headers.append('Authorization', `Basic ${btoa('user:password')}`);
-
-    this.http.get('http://localhost:8080/hello-user', {headers: headers}).subscribe(user => {
-      console.log(user)
+    this.userService.isAuthenticated().subscribe(bool => {
+      this.isAuthenticated = bool;
+      this.user = this.userService.getUser();
     });
-    // this.userService.helloUser().subscribe(user => {
-    //   console.log(user)
-    // });
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      this.error = params.has('error');
+    });
   }
 
-
-  login() {
-    this.userService.login(this.credentials, () => {
+  /**
+   * Function to attempt to log a user in
+   */
+  public login() {
+    this.userService.login(this.credentials.username, this.credentials.password, () => {
         this.router.navigateByUrl('/');
     });
     return false;

@@ -72,9 +72,14 @@ This is Spring-boot's website: https://spring.io/projects/spring-boot. I downloa
 Useful: https://stackoverflow.com/questions/42208442/maven-docker-cache-dependencies	
 
 Spring Security: https://www.baeldung.com/role-and-privilege-for-spring-security-registration
+
 and http://websystique.com/spring-security/secure-spring-rest-api-using-basic-authentication/
+
 and https://github.com/eugenp/tutorials/tree/master/spring-security-rest
+
 actually: https://javarevisited.blogspot.com/2018/01/how-to-enable-http-basic-authentication-spring-security-java-xml-configuration.html
+
+https://spring.io/guides/tutorials/spring-security-and-angular-js/
 ## IDE Used
 I used [VScode](https://code.visualstudio.com/) to write the front end of this application.
 

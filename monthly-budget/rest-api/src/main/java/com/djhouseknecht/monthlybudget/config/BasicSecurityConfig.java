@@ -39,7 +39,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter implements
                 .httpBasic().realmName(REALM)
             .and()
                 .authorizeRequests()
-                .antMatchers("/logout*").permitAll()
+                .antMatchers("/custom-logout").permitAll()
             .and()
                 .authorizeRequests()
                 .anyRequest().authenticated();
@@ -56,7 +56,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter implements
             .allowedOrigins("http://localhost:4200", "https://localhost:4200")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD")
                 .allowedHeaders("content-type", "accept", "X-Requested-With", "remember-me",
-                        "withCredentials", "credentials", "Authorization")
+                        "withCredentials", "credentials", "Authorization", "Access-Control-Allow-Origin")
                 .exposedHeaders("location")
                 .allowCredentials(true);
     }

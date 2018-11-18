@@ -9,11 +9,14 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/budget" routerLinkActive="active">My Budget</a>
+        </li>
       </ul>
       <ul class="navbar-nav mr-left">
         <li>
-          <a *ngIf="!authenticated" href="javascript:void(0)" (click)="logout()" class="nav-link">Logout</a>
-          <a *ngIf="authenticated" routerLink="/login" routerLinkActive="active" class="nav-link">Sign In</a>
+          <a *ngIf="authenticated" href="javascript:void(0)" (click)="logout()" class="nav-link">Logout</a>
+          <a *ngIf="!authenticated" routerLink="/login" routerLinkActive="active" class="nav-link">Sign In</a>
         </li>
       </ul>
     </div>
