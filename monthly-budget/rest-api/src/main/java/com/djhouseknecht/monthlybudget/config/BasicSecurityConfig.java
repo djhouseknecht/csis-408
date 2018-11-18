@@ -28,15 +28,19 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter implements
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
-                .withUser("user")
+                .withUser("Professor")
                 .password(passwordEncoder().encode("password"))
-                .authorities("ROLE_USER");
+                .authorities("ROLE_ADMIN")
+            .and()
+                .withUser("David")
+                .password((passwordEncoder().encode("password")))
+                .authorities("ROLE_ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .httpBasic().realmName(REALM)
+            .httpBasic().realmName(REALM)
             .and()
                 .authorizeRequests()
                 .antMatchers("/custom-logout").permitAll()

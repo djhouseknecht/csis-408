@@ -21,7 +21,7 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "/hello-user", produces = {"application/json"})
-    public ResponseEntity getCurrentUser() {
+    public ResponseEntity<Object> getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return new ResponseEntity(authentication.getPrincipal(), HttpStatus.OK);
     }

@@ -80,6 +80,8 @@ and https://github.com/eugenp/tutorials/tree/master/spring-security-rest
 actually: https://javarevisited.blogspot.com/2018/01/how-to-enable-http-basic-authentication-spring-security-java-xml-configuration.html
 
 https://spring.io/guides/tutorials/spring-security-and-angular-js/
+
+https://stackoverflow.com/questions/24839760/spring-boot-responsebody-doesnt-serialize-entity-id
 ## IDE Used
 I used [VScode](https://code.visualstudio.com/) to write the front end of this application.
 
