@@ -1,4 +1,4 @@
-package com.djhouseknecht.monthlybudget.budget.category;
+package com.djhouseknecht.monthlybudget.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
