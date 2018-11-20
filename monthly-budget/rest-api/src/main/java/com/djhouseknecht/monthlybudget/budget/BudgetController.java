@@ -1,9 +1,10 @@
 package com.djhouseknecht.monthlybudget.budget;
 
-import com.djhouseknecht.monthlybudget.category.Category;
 import com.djhouseknecht.monthlybudget.category.CategoryRepository;
+import com.djhouseknecht.monthlybudget.category.CategoryService;
 import com.djhouseknecht.monthlybudget.user.UserService;
 import com.djhouseknecht.monthlybudget.util.Response;
+import com.djhouseknecht.monthlybudget.util.ValidateUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,29 @@ public class BudgetController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping(value = "/{year}/{month}")
-    public Response getBudgetItems(@PathVariable Integer year, @PathVariable Integer month) {
-        List<Budget> budgets = budgetRepository.findAllByUsernameAndYearAndMonth(userService.getUsername(), year, month);
+    @Autowired
+    private CategoryService categoryService;
+
+    /**
+     * Get budget items. Can pass in year and month, or just year for filtering
+     * @param year
+     * @param month
+     * @return
+     */
+    @GetMapping
+    public Response getBudgetItems(@RequestParam(value = "year", required = false) Integer year,
+                                   @RequestParam(value = "month", required = false) Integer month) {
+        List<Budget> budgets;
+        String user = userService.getUsername();
+
+        /* if year and month are present */
+        if (year != null && month != null) {
+            budgets = budgetRepository.findAllByUsernameAndYearAndMonth(userService.getUsername(), year, month);
+        } else if (year != null) {
+            budgets = budgetRepository.findAllByUsernameAndYear(user, year);
+        } else {
+            budgets = budgetRepository.findAllByUsername(user);
+        }
         return new Response(HttpStatus.OK, budgets);
     }
 
@@ -51,10 +72,21 @@ public class BudgetController {
         }
 
         Budget budget = optionalBudget.get();
+
+        /* validate user */
+        if (!ValidateUser.checkUser(budget)) {
+            return new Response(HttpStatus.FORBIDDEN);
+        }
+
+        /* create category if it does not exist */
+        categoryService.createCategoryIfDoesNotExist(userService.getUsername(), budget.getCategory());
+
         budget.setMonth(updatedBudget.getMonth());
         budget.setYear(updatedBudget.getYear());
         budget.setAmount(updatedBudget.getAmount());
         budget.setCategory(updatedBudget.getCategory());
+
+        if (updatedBudget.getIncome() == null) budget.setIncome(updatedBudget.getIncome());
 
         budgetRepository.save(budget);
 
@@ -70,23 +102,17 @@ public class BudgetController {
     public Response saveBudgetItem(@RequestBody Budget budget) {
         String user = userService.getUsername();
 
-        /* if the category is not present, create it */
-        Optional<Category> optionalCategory = categoryRepository.findOneByCategory(budget.getCategory());
-
-        if (!optionalCategory.isPresent()) {
-            Category category = new Category();
-            category.setCategory(budget.getCategory());
-            category.setUsername(user);
-            categoryRepository.save(category);
-            logger.info("Category not found. Created category \""
-                + category.getCategory()
-                + "\" for user \"" + user + "\"");
-        }
+        /* create category if it does not exist */
+        categoryService.createCategoryIfDoesNotExist(userService.getUsername(), budget.getCategory());
 
         /* save the budget item */
         budget.setUsername(user);
         if (budget.getAmount() == null) {
             budget.setAmount(0.0);
+        }
+
+        if (budget.getIncome() == null) {
+            budget.setIncome("Y");
         }
 
         budgetRepository.save(budget);
@@ -105,7 +131,13 @@ public class BudgetController {
         if (!optionalBudget.isPresent()) {
             return new Response(HttpStatus.NOT_FOUND);
         }
-        return new Response(HttpStatus.OK, optionalBudget.get());
+        Budget budget = optionalBudget.get();
+        /* validate user */
+        if (!ValidateUser.checkUser(budget)) {
+            return new Response(HttpStatus.FORBIDDEN);
+        }
+
+        return new Response(HttpStatus.OK, budget);
     }
 
     /**
@@ -119,8 +151,12 @@ public class BudgetController {
         if (!optionalBudget.isPresent()) {
             return new Response(HttpStatus.NOT_FOUND);
         }
-
         Budget budget = optionalBudget.get();
+        /* validate user */
+        if (!ValidateUser.checkUser(budget)) {
+            return new Response(HttpStatus.FORBIDDEN);
+        }
+
         budgetRepository.delete(budget);
 
         return new Response(HttpStatus.OK);

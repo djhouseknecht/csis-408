@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title">Change Budget</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form role="form" (submit)="changeBudget()">
+    <mat-form-field>
+      <mat-select required
+        placeholder="Month"
+        name="month"
+        [(ngModel)]="model.month">
+        <mat-option *ngFor="let month of months" [value]="month.number">
+          {{month.text}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select required
+        placeholder="Year"
+        name="year"
+        [(ngModel)]="model.year">
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{year}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!model.year || !model.month">Select Budget</button>
+  </form>
+</div>

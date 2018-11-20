@@ -5,5 +5,9 @@
 
   <div class="pane-body">
     Welcome to David's Monthly Budget Application!
+    <div  class="p-3">
+      <button *ngIf="!isAuthenticated" class="btn btn-primary" type="button" (click)="route('login')" mat-raised-button color="primary">Go To Login</button>
+      <button *ngIf="isAuthenticated" class="btn btn-primary" type="button" (click)="route('budget')" mat-raised-button color="primary">Go To Budget</button>
+    </div>
   </div>
 </div>

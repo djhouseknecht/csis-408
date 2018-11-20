@@ -1,5 +1,6 @@
 package com.djhouseknecht.monthlybudget.category;
 
+import com.djhouseknecht.monthlybudget.util.HasUsername;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Category {
+public class Category implements HasUsername {
 
     @Id
     @GeneratedValue

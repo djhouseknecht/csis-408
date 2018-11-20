@@ -57,7 +57,7 @@
 html, body {
   height: 100%;
   // height: calc(100vh - #{navbar-height});
-
+  font-weight: 400;
   font-family: $font-family-sans-serif;
   background-color: $gray-1;
 }
@@ -80,6 +80,7 @@ html, body {
     padding: $common-padding;
     background-color: $color3;
     color: $white;
+    font-weight: 700;
     h4 {
       font-size: 24px;
       font-weight: $bold;
@@ -101,4 +102,10 @@ html, body {
 img {
   max-width: 340px;
   max-height: 340px;
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 1100 !important;
 }

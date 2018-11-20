@@ -1,5 +1,6 @@
 package com.djhouseknecht.monthlybudget.budget;
 
+import com.djhouseknecht.monthlybudget.util.HasUsername;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Budget {
+public class Budget implements HasUsername {
 
     @Id
     @GeneratedValue
@@ -24,7 +25,9 @@ public class Budget {
 
     @NotNull
     private Integer year;
+    @Min(value = 0)
     private Double amount;
+    private String income;
     private String category;
     private String username;
 
@@ -61,6 +64,14 @@ public class Budget {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getIncome() {
+        return income;
+    }
+
+    public void setIncome(String income) {
+        this.income = income;
     }
 
     public String getCategory() {

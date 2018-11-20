@@ -24,11 +24,26 @@ public interface BudgetRepository extends JpaRepository<Budget, Long> {
     void clearCategory(@Param("user") String username, @Param("cat") String category);
 
     /**
-     * Get all budget items for a user by year and month
+     * Get all budget items for a given username, year, and month
      * @param username
      * @param year
      * @param month
      * @return
      */
     List<Budget> findAllByUsernameAndYearAndMonth(String username, Integer year, Integer month);
+
+    /**
+     * Find all budget items for a given username and year
+     * @param username
+     * @param year
+     * @return
+     */
+    List<Budget> findAllByUsernameAndYear(String username, Integer year);
+
+    /**
+     * Find all budget items for a given username
+     * @param username
+     * @return
+     */
+    List<Budget> findAllByUsername(String username);
 }

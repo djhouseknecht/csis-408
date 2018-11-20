@@ -1,8 +1,10 @@
 package com.djhouseknecht.monthlybudget.category;
 
+import com.djhouseknecht.monthlybudget.balancesheet.BalanceRepository;
 import com.djhouseknecht.monthlybudget.budget.BudgetRepository;
 import com.djhouseknecht.monthlybudget.user.UserService;
 import com.djhouseknecht.monthlybudget.util.Response;
+import com.djhouseknecht.monthlybudget.util.ValidateUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,9 @@ public class CategoryController {
 
     @Autowired
     private BudgetRepository budgetRepository;
+
+    @Autowired
+    private BalanceRepository balanceRepository;
 
     @GetMapping
     public Response getAllUsersCategories() {
@@ -73,6 +78,11 @@ public class CategoryController {
         }
 
         Category category = optionalCategory.get();
+        /* validate user */
+        if (!ValidateUser.checkUser(category)) {
+            return new Response(HttpStatus.FORBIDDEN);
+        }
+
         category.setCategory(updatedCategory.getCategory());
         categoryRepository.save(category);
 
@@ -94,10 +104,17 @@ public class CategoryController {
 
         Category category = optionalCategory.get();
 
-        /* clear all budget categories before deleting category*/
-        budgetRepository.clearCategory(userService.getUsername(), category.getCategory());
-        /* TODO: clear all balance sheet categories before deleting category */
+        /* validate user */
+        if (!ValidateUser.checkUser(category)) {
+            return new Response(HttpStatus.FORBIDDEN);
+        }
 
+        /* clear all budget categories before */
+        budgetRepository.clearCategory(userService.getUsername(), category.getCategory());
+        /* clear all balance sheet categories before */
+        balanceRepository.clearCategory(userService.getUsername(), category.getCategory());
+
+        /* delete the category */
         categoryRepository.delete(category);
 
         return new Response(HttpStatus.OK);
