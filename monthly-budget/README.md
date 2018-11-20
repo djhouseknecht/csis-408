@@ -7,24 +7,40 @@ need to pay for Android, iOS developer accounts. Submit your URL for your projec
 of your working project folder via Blackboard. No Email submissions accepted.
 
 ## Running the Application
-#### Requirements
+### Requirements
 - It is best to use a new version of [Google Chrome](https://www.google.com/chrome/)
 - I wrote and tested it on version `69.0.3497.100`
-- Docker (what version?)
-- `docker` and `docker-compose` (version 3)
-    - `sudo apt install docker-compose`
+- [Docker](https://www.docker.com/get-started) latest version is fine
+- [Docker-compose](https://docs.docker.com/compose/install/) (version 3)
 
-#### Instructions
-Start Rest using docker (note: you may need to run `docker` as `sudo` or `Administrator` on Windows)
+### Instructions
+It is easiest to use `docker-compose` to build and run that app. Pull the project down from github into a directory that the current user has read & write permissions to. 
+
+You may need to run `docker` and `docker-compose` commands as `sudo` or as *Administrator* on windows. 
+
+```
+# cd into working directory (there should be a docker-compose.yml file present)
+
+# build the images
+sudo docker-compose build
+    # this will take a while if you are running it for the first time
+
+# run the projects
+sudo docker-compose up
+
+# ctrl + c to take down the container
+```
+
+#### Running the projects individually 
+You only need to do this if the above `docker-compose` commands don't work. 
+
+Start Rest using docker:
 1. `docker build . -t project-2`
 2. `docker run -p 8080:8080 project-2`
-1. Pull down the project onto your locally machine
 
-UI: 
-`docker build . -t ui-project-2`
-`docker run -p 4200:4200 ui-project-2`
-tests
-`docker run --entrypoint npm  project-2-ui test`
+Start UI using docker: 
+1. `docker build . -t ui-project-2`
+2. `docker run -p 4200:4200 ui-project-2`
 
 # TODO's (dev notes)
 - [ ] .dockerignore files
@@ -48,19 +64,16 @@ tests
 - Docker was used to build, test, and deploy the projects 
 ### Data Source
 - H2 file storage
-- Flyway migration 
+- The data is stored in the container. Once the container goes down, the data will be lost. This was for simplicity sake. I did not want to spin up another container or an external data source for this project.
 ### Java Backend
 - Spring boot
 - Maven build
 - Docker 
 - security
-    - Not using HTTP redirects because it restricts the clien with the security/login implementation
-- Tests
-    - tests are run when the application is being built 
-- swagger
+    - Using simple in-memory basic http auth. I learned alot about Spring Security, but I know there is still alot more. I would like to get a working OAuth security system in place, but the in-memory option worked for this assignment. 
+    - Not using HTTP redirects because it restricts the client with the security/login implementation
 ### Front End 
 - Angular 7
-- Tests
 
 ## References
 This was a useful resource for the Dockerization of the Java side of this application: https://www.callicoder.com/spring-boot-docker-example/
@@ -71,18 +84,17 @@ This is Spring-boot's website: https://spring.io/projects/spring-boot. I downloa
 
 Useful: https://stackoverflow.com/questions/42208442/maven-docker-cache-dependencies	
 
-Spring Security: https://www.baeldung.com/role-and-privilege-for-spring-security-registration
+Spring Security: 
+- https://www.baeldung.com/role-and-privilege-for-spring-security-registration
+- http://websystique.com/spring-security/secure-spring-rest-api-using-basic-authentication/
+- https://github.com/eugenp/tutorials/tree/master/spring-security-rest
+- https://javarevisited.blogspot.com/2018/01/how-to-enable-http-basic-authentication-spring-security-java-xml-configuration.html
+- https://spring.io/guides/tutorials/spring-security-and-angular-js/
+- https://stackoverflow.com/questions/24839760/spring-boot-responsebody-doesnt-serialize-entity-id
 
-and http://websystique.com/spring-security/secure-spring-rest-api-using-basic-authentication/
+As you can see I struggled finding my way around spring security. It was my first time working with it. 
 
-and https://github.com/eugenp/tutorials/tree/master/spring-security-rest
-
-actually: https://javarevisited.blogspot.com/2018/01/how-to-enable-http-basic-authentication-spring-security-java-xml-configuration.html
-
-https://spring.io/guides/tutorials/spring-security-and-angular-js/
-
-https://stackoverflow.com/questions/24839760/spring-boot-responsebody-doesnt-serialize-entity-id
 ## IDE Used
 I used [VScode](https://code.visualstudio.com/) to write the front end of this application.
 
-I used [IntelliJ]() to write the Java backend of this application. 
+I used [IntelliJ](https://www.jetbrains.com/idea/download/#section=linux) to write the Java backend of this application. 

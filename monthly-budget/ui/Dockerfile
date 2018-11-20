@@ -19,19 +19,6 @@ EXPOSE 4200
 
 RUN npm install
 
-ADD . ./
+ADD . .
 
 ENTRYPOINT [ "npm", "start" ]
-# FROM nexus-docker.liberty.edu:5000/lu/headless-chrome:latest
-
-# RUN npm install -g @angular/cli
-
-# WORKDIR /usr/src/app
-
-# RUN rm -rf node_modules
-
-# COPY registration-ui/package*.json ./
-
-# RUN npm install
-
-# COPY registration-ui/ ./

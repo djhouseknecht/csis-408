@@ -20,6 +20,7 @@ public class CategoryService {
      * @return
      */
     public Category createCategoryIfDoesNotExist(String user, String categoryName) {
+        if (categoryName == null) return null;
         Optional<Category> optionalCategory = categoryRepository.findOneByCategory(categoryName);
         if (!optionalCategory.isPresent()) {
             Category category = new Category();

@@ -19,11 +19,15 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
+# make sure the database file is created
+RUN touch ./database.mv.db
+# RUN chmod 755 /usr/src/app/database.mv.db
+
 # create user and grant permissions
 RUN addgroup -S appuser && adduser -S -G appuser appuser 
 
 RUN chown -R appuser:appuser /usr/src/app/
-RUN chmod 755 /usr/src/app/
+RUN chmod 766 /usr/src/app/
 
 # switch to newly created user
 USER appuser

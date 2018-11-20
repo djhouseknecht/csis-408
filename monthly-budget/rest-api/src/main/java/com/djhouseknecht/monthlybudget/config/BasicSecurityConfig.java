@@ -43,7 +43,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter implements
             .httpBasic().realmName(REALM)
             .and()
                 .authorizeRequests()
-                .antMatchers("/custom-logout").permitAll()
+                .antMatchers("/custom-logout", "/instructions.pdf").permitAll()
             .and()
                 .authorizeRequests()
                 .anyRequest().authenticated();

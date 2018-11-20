@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,6 +100,7 @@ public class BudgetController {
      * @return
      */
     @PostMapping
+    @Transactional
     public Response saveBudgetItem(@RequestBody Budget budget) {
         String user = userService.getUsername();
 
