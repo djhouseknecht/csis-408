@@ -6,10 +6,17 @@ Development Environment (IDE) you want. You may create these all as Web Apps, yo
 need to pay for Android, iOS developer accounts. Submit your URL for your project, or a zip file
 of your working project folder via Blackboard. No Email submissions accepted.
 
+
+## Notes on the Project
+
+This was built to be deployed as a web application. For a production level application, I would configure a datasource on it's own server; as well as deploy the java rest project and the angular ui project to their own servers. Once this is all setup, the user would simply go to the website and interact with the app. Also, the security would be more dynamic so new users could sign up. 
+
+The project uses Docker to run locally. This prevents version conflicts when trying to get the needed dependency to run it. 
+
 ## Running the Application
 ### Requirements
 - It is best to use a new version of [Google Chrome](https://www.google.com/chrome/)
-- I wrote and tested it on version `69.0.3497.100`
+    - I wrote and tested it on version `69.0.3497.100`
 - [Docker](https://www.docker.com/get-started) latest version is fine
 - [Docker-compose](https://docs.docker.com/compose/install/) (version 3)
 
@@ -21,15 +28,16 @@ You may need to run `docker` and `docker-compose` commands as `sudo` or as *Admi
 ```
 # cd into working directory (there should be a docker-compose.yml file present)
 
-# build the images
+# build the images (this will take a while if you are running it for the first time)
 sudo docker-compose build
-    # this will take a while if you are running it for the first time
 
 # run the projects
 sudo docker-compose up
 
 # ctrl + c to take down the container
 ```
+
+Once you have the container running, go to http://localhost:4200 to reach the applicaiton. There is an **instructions** link in the nav-bar that will open a pdf with instructions for the user. The instructions can also be found [here.](/rest-api/src/main/resources/static/instructions.pdf)
 
 #### Running the projects individually 
 You only need to do this if the above `docker-compose` commands don't work. 
@@ -42,30 +50,14 @@ Start UI using docker:
 1. `docker build . -t ui-project-2`
 2. `docker run -p 4200:4200 ui-project-2`
 
-# TODO's (dev notes)
-- [ ] .dockerignore files
-- [ ] Docker commands to test the apps 
-- [ ] how-instruction
-    - [ ] install
-    - [ ] run
-    - [ ] test
-    - [ ] what IDE used
-- [ ] Screen shots of use/testing
-- [ ] Documentation 
-    - [ ] thorough walk through 
-- [ ] HTML/CSS validate 
-- [ ] citations
-
-## Notes on the Project
-
-
-
 ### Project 
 - Docker was used to build, test, and deploy the projects 
 ### Data Source
 - H2 file storage
 - The data is stored in the container. Once the container goes down, the data will be lost. This was for simplicity sake. I did not want to spin up another container or an external data source for this project.
+- Once the app is running, you can navigate to http://localhost:8080/h2 to access the database. The user is `sa` and there is no password. 
 ### Java Backend
+Check out the backend's [README](/rest-api/README.md) for code documentation
 - Spring boot
 - Maven build
 - Docker 
@@ -73,6 +65,7 @@ Start UI using docker:
     - Using simple in-memory basic http auth. I learned alot about Spring Security, but I know there is still alot more. I would like to get a working OAuth security system in place, but the in-memory option worked for this assignment. 
     - Not using HTTP redirects because it restricts the client with the security/login implementation
 ### Front End 
+Check out the frontend's [README](/ui/README.md) for code documentation
 - Angular 7
 
 ## References
@@ -98,3 +91,17 @@ As you can see I struggled finding my way around spring security. It was my firs
 I used [VScode](https://code.visualstudio.com/) to write the front end of this application.
 
 I used [IntelliJ](https://www.jetbrains.com/idea/download/#section=linux) to write the Java backend of this application. 
+
+### TODO's (dev notes)
+- [ ] .dockerignore files
+- [ ] Docker commands to test the apps 
+- [ ] how-instruction
+    - [ ] install
+    - [ ] run
+    - [ ] test
+    - [ ] what IDE used
+- [ ] Screen shots of use/testing
+- [ ] Documentation 
+    - [ ] thorough walk through 
+- [ ] HTML/CSS validate 
+- [ ] citations
