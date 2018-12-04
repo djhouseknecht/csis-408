@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ping Pong</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Player Score</td>
+                <td>AI Score</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="playerScore"></td>
+                <td id="aiScore"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="instructions">
+        <h2>How to play</h2>
+        <div>
+            <h4>Goal</h4>
+            Use your paddle to hit the ball towards the AI player. The AI will attempt to return the ball. Whoever can get the ball past
+            the opponents paddle, will score a point. 
+        </div>
+        <h4>Instructions</h4>
+        <ol>
+            <li>Press the UP ARROW on your keyboard to move your paddle up</li>
+            <li>Press the DOWN ARROW on your keyboard to move your paddle down</li>
+            <li><i>TIP: If you hit the ball at a sharp angle on the edge of your paddle, you will &#34;smash&#34; the ball causing it to increase its speed for a short while</i></li>
+            <li>To <strong>restart</strong> the game, simply refresh your browser</li>
+        </ol>
+
+        <div class="add-margin">
+            Instructions and a walkthrough of the code can be found&nbsp;<a target="_blank" href="ping-pong-instructions-and-code-walkthrough.pdf">here</a>.
+        </div>
+
+        <div><i>Written by&#58;&nbsp;</i><a target="_blank" href="https://github.com/djhouseknecht">David Houseknecht</a></div>
+        <div><i>Source code can be found on&nbsp;</i><a target="_blank" href="https://github.com/djhouseknecht/csis-408/tree/master/ping-pong">Github</a></div>
+        <div><i>References&#58;&nbsp;</i>the main idea for the code came from&nbsp;<a target="_blank" href="https://www.youtube.com/watch?v=ju09womACpQ">this</a>&nbsp;YouTube video</div>
+    </div>
+
+    <script src="pong.js"></script>
+</body>
+</html>

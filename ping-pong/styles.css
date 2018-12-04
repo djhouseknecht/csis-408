@@ -1,0 +1,25 @@
+canvas { 
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+h4 { 
+    margin-bottom: 4px;
+}
+table { 
+    border-collapse: collapse;
+}
+table > tr, td { 
+    border: 2px solid black;
+    text-align: center;
+}
+div#instructions { 
+    display: block;
+    width: calc(calc(50vw - 350px) / 2);
+}
+.add-margin { 
+    margin: 12px 0;
+}
