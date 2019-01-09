@@ -1,5 +1,7 @@
 # CSIS-408
-All 4 projects for CSIS 408
+This repo is for the projects for my CSIS 408 at Liberty University Online. Projects 1-3 are stored in this repo. Project 4 has a separate repo because it was cleaner to keep that separated (also, I should have made project 2 a separate repo). 
+
+Below are the instructions given to me for the class. They are a little vague which was good and bad. Good because it gave me some creative freedom in what I built and how I built it. I was allowed to use any technology I wanted. Bad because it was difficult to hit the mark grade wise because there were uncommunicated expectations as to what the apps should include. Overall, it was a good experience. I got to work a little more with Java Spring, and I got to touch on AngularFire and html canvases. 
 
 ## Basic Instructions
 Each project should include how-to instructions and setup details for the end user (i.e., your
@@ -35,7 +37,7 @@ you do not need to pay for Android, iOS developer accounts. Submit your URL for 
 or a zip file of your working project folder via Blackboard. No Email submissions accepted.
 
 
-## Project 4: To-Do List App
+## [Project 4: To-Do List App](https://github.com/djhouseknecht/angularfire-todo)
 Project 4: Create a To-Do List App. You may choose any Integrated Development Environment
 (IDE) you want. You may create these all as Web Apps, you do not need to pay for Android, iOS
 developer accounts. Submit your URL for your project, or a zip file of your working project
